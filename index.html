@@ -71,11 +71,13 @@ a{color:inherit}
 .kicker{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--olive);margin:26px 0 10px}
 
 /* top bar */
-.topbar{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:calc(var(--st) + 10px) 16px 10px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.topbar{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:calc(var(--st) + 10px) 6px 10px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
 .iconbtn{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink)}
 .iconbtn:active{background:var(--mist)}
 .iconbtn svg{width:22px;height:22px}
-.topbar .label{color:var(--ink-soft)}
+.topbar .short{display:none}
+@media (max-width:349px){.topbar .long{display:none}.topbar .short{display:inline}}
+.topbar .label{color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;letter-spacing:.1em;font-size:10.5px}
 
 /* week list */
 .week-hero{padding:calc(var(--st) + 26px) 24px 6px;position:relative}
@@ -274,7 +276,7 @@ textarea::placeholder{color:#ABA3A7;font-weight:500}
   <section class="screen" id="day" data-tabs="1">
     <div class="topbar">
       <button class="iconbtn" data-go="days" aria-label="Back to this week"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
-      <span class="label" id="dayCount">Day 1 of 27</span>
+      <span class="label"><span class="long">Hillcrest Advent Guide · </span><span class="short">Hillcrest · </span><span id="dayCount">Day 1 of 27</span></span>
       <span style="width:40px"></span>
     </div>
     <div style="padding-top:10px"><div class="progress"><i id="dayProgress"></i></div></div>
