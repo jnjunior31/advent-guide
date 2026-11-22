@@ -267,7 +267,7 @@ textarea::placeholder{color:#ABA3A7;font-weight:500}
       <ul class="qlist"><li>What do you think this Bible passage is saying?</li></ul>
       <div class="prose"><p>Join us this Advent as we wait together as a church, seeking the One who came and who is coming again.</p></div>
       <button class="btn btn-plum" data-go="days" style="max-width:none;margin-top:8px">See this week’s readings</button>
-      <p class="legal">Scripture quotations taken from The Holy Bible, New International Version® NIV® Copyright © 1973, 1978, 1984, 2011 by Biblica, Inc.® Used by permission. All rights reserved worldwide.</p>
+      <p class="legal">Scripture quotations taken from The Holy Bible, New International Version® NIV® Copyright © 1973, 1978, 1984, 2011 by Biblica, Inc.® All rights reserved worldwide.</p>
     </div>
   </section>
 
@@ -484,7 +484,7 @@ textarea::placeholder{color:#ABA3A7;font-weight:500}
       '<svg class="p-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>'+
       '<div class="p-hint">Tap to read · '+nv+' verse'+(nv>1?'s':'')+(d.miss?' (plus a link)':'')+'</div>'+
       '<div class="p-body" id="pBody"><div class="p-inner"><div class="p-text">'+passageBody(d)+'</div>'+
-      '<div class="p-foot"><span>NIV® Copyright © 1973, 1978, 1984, 2011 by Biblica, Inc.® Used by permission. All rights reserved worldwide.</span><a href="'+bg(d.q)+'" target="_blank" rel="noopener">Read on BibleGateway ↗</a></div></div></div></div>';
+      '<div class="p-foot"><span>NIV® Copyright © 1973, 1978, 1984, 2011 by Biblica, Inc.® All rights reserved worldwide.</span><a href="'+bg(d.q)+'" target="_blank" rel="noopener">Read on BibleGateway ↗</a></div></div></div></div>';
     html += '<p class="explain">'+esc(d.ex)+'</p>';
     html += '<div class="qs">'+QS.map(function(q,i){
       return '<div class="q'+(q.pray?' pray':'')+'"><label for="q'+n+'_'+i+'"><span class="n">'+(i+1)+'</span><span>'+esc(q.t)+(q.kid?'<span class="kid">'+esc(q.kid)+'</span>':'')+'</span></label>'+
