@@ -355,6 +355,7 @@ textarea::placeholder{color:#ABA3A7;font-weight:500}
     { n:4, title:"The Rescuer Draws Near", intro:"The promises start coming true. An angel visits Mary and Joseph, John the Baptist is born, and people break into songs that echo the promises from the first two weeks.", from:20, to:25 },
     { n:5, title:"The Arrival", intro:"The Rescuer is born. The first people to welcome him are shepherds working the night shift and foreign visitors, a sign that this good news is for everyone.", from:26, to:27 }
   ];
+  function wkDates(w){ var a=DAYS[w.from-1].date, b=DAYS[w.to-1].date; return MO[a.getMonth()]+" "+a.getDate()+" – "+MO[b.getMonth()]+" "+b.getDate(); }
   function weekOf(n){ for(var i=0;i<WEEKS.length;i++) if(n>=WEEKS[i].from && n<=WEEKS[i].to) return WEEKS[i]; return WEEKS[0]; }
   var curWeek = null;
   function weekDone(w){ for(var k=w.from;k<=w.to;k++) if(!mem.done[k]) return false; return true; }
@@ -473,11 +474,11 @@ textarea::placeholder{color:#ABA3A7;font-weight:500}
     var ti = todayIndex();
     if(curWeek===null) curWeek = openWeek();
     var wk = WEEKS[curWeek-1];
-    $("#wkTag").textContent = "Week "+wk.n; $("#wkTitle").textContent = wk.title; $("#wkIntro").textContent = wk.intro;
+    $("#wkTag").textContent = "Week "+wk.n+" · "+wkDates(wk); $("#wkTitle").textContent = wk.title; $("#wkIntro").textContent = wk.intro;
     $("#weekCards").innerHTML = WEEKS.filter(function(w){ return w.n!==curWeek; }).map(function(w){
       var n=0; for(var k=w.from;k<=w.to;k++) if(mem.done[k]) n++;
       var tot=w.to-w.from+1, st = n===tot ? "Completed" : (n>0 ? n+" of "+tot+" reflected" : tot+" readings");
-      return '<div class="today-card wk-card"><span class="label">Week '+w.n+' · '+st+'</span><h3>'+esc(w.title)+'</h3><button class="btn btn-gold" data-week="'+w.n+'">'+(n===tot?"Revisit":"Open")+' Week '+w.n+'</button></div>';
+      return '<div class="today-card wk-card"><span class="label">Week '+w.n+' · '+wkDates(w)+'</span><h3>'+esc(w.title)+'</h3><p>'+st+(weekOf(f).n===w.n?" · Where the community is this week":"")+'</p><button class="btn btn-gold" data-week="'+w.n+'">'+(n===tot?"Revisit":"Open")+' Week '+w.n+'</button></div>';
     }).join("");
     $("#weekCards").querySelectorAll(".today-card").forEach(function(c,i){ sparkles(c, [[84,14,10],[92,38,8]]); });
     $("#dayList").innerHTML = DAYS.filter(function(d){ return d.n>=wk.from && d.n<=wk.to; }).map(function(d){ var i=d.n-1;
